@@ -47,3 +47,43 @@ a:hover{
     background-color: #FF4B24;
     transition: .5s;
 }
+.outer-container{
+    display:flex;
+    flex-direction: row;
+    max-width: 86%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 80px;
+
+
+}
+.containerLPtekst1{
+    flex-direction: row;
+    width: auto;
+    max-width: 100%;
+    padding: 40px;
+    font-size: 2vw;
+    text-shadow: 2px 4px 4px rgba(46,91,173,0.6);
+    background: #F9F9FA;
+    border-radius: 25px;
+    box-shadow: 5px 5px 3px #888888;
+
+}
+.containerLPtekst2{
+    flex-direction: row;
+    width: auto;
+    max-width:80%;
+    padding: 40px;
+    font-size: 1vw;
+    line-height: 1.5;
+    text-shadow: 2px 4px 4px rgba(46,91,173,0.6);
+}
+
+.responsive{
+    width: 150%;
+    height: auto;
+
+}
+body{
+    font-family: "Calibri Light";
+}
