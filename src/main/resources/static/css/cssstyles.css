@@ -91,7 +91,7 @@ button:hover{
 .footer{
     background-color: red;
     padding: 70px;
-    position: absolute;
+    position: relative;
     width: 100%;
     bottom: 0px;
 }
