@@ -1,4 +1,9 @@
 package com.example.santaslist.repository;
 
-public class WishRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class WishRepository
+{
+
 }
