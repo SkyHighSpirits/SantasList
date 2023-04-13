@@ -9,6 +9,7 @@
 
 body{
     font-family: montserrat;
+    line-height: 1.5;
 }
 
 nav{
@@ -25,18 +26,18 @@ label.logo{
     font-weight: bold;
 }
 
-nav ul{
+nav .nav-ul{
     float: right;
     margin-right: 20px;
 }
 
-nav ul li{
+nav .nav-ul li{
     display: inline-block;
     line-height: 80px;
     margin: 0 5px;
 }
 
-nav ul li a{
+nav .nav-ul li a{
     color: white;
     font-size: 17px;
     padding: 7px 13px;
@@ -69,3 +70,101 @@ button:hover{
     background-color: #C12301;
     transition: .5s;
 }
+
+/*styling for footer*/
+.container{
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-ul{
+    list-style: none;
+}
+
+.footer{
+    background-color: red;
+    padding: 70px;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+
+.footer-col h4{
+    font-size: 18px;
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #C12301;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+.footer-col .footer-ul .footer-li:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.footer-col .footer-ul .footer-li .footer-link{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.footer-col .footer-ul .footer-li .footer-link:hover{
+    color: #C12301;
+    background-color: white;
+    padding-left: 8px;
+}
+
+.footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: #C12301;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover{
+    color: #C12301;
+    background-color: white;
+}
+
+@media(max-width: 767px){
+    .footer-col{
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width: 574px){
+    .footer-col{
+        width: 100%;
+    }
+}
+
