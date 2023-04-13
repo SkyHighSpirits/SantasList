@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS wishes;
 CREATE TABLE users (
                        userID INT UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY,
                        email VARCHAR(255) UNIQUE NOT NULL,
-                       userPassword varchar(255) NOT NULL,
+                       userPassword VARCHAR(255) NOT NULL,
                        firstName VARCHAR(255) NOT NULL,
                        lastName VARCHAR(255) NOT NULL
 );
