@@ -1,5 +1,7 @@
 package com.example.santaslist;
 
+import com.example.santaslist.model.Wish;
+import com.example.santaslist.repository.WishRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

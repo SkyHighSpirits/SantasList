@@ -13,14 +13,14 @@ import java.util.List;
 @Repository
 public class UserRepository {
 
-    //@Value("${spring.datasosurce.url}")
-    private String DB_URL = "jdb:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
+    @Value("${spring.datasource.url}")
+    private String DB_URL; //= "jdb:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
 
-    // @Value("{$spring.datasource.username}")
-    private String UID = "santaroot";
+    @Value("{$spring.datasource.username}")
+    private String UID;// = "santaroot";
 
-    // @Value("{$spring.datasource.password}")
-    private String PWD = "#danmark2300";
+    @Value("{$spring.datasource.password}")
+    private String PWD;// = "#danmark2300";
 
     public List<User> getAllUsers(){
         List<User> userList = new ArrayList<>();

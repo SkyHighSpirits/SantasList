@@ -18,18 +18,24 @@
 </nav>
 
 
-
+<form action="signup" method="post">
 <div class="containerlogin">
-  <input type="text" placeholder="Fornavn" id="ip1">
-  <br />
-  <input type="text" placeholder="Efternavn" id="ip1">
-  <br />
-  <input type="text" placeholder="Email" id="ip1">
-  <br />
-  <input type="text" placeholder="Kodeord" id="ip1">
-  <br />
-  <button class="button">sign up</button>
+
+
+  <p style="padding-bottom: 10px"><input id="fornavn-field" name="firstName" type="text" placeholder="Fornavn" th:value="${user.firstName}"></p>
+
+
+  <p style="padding-bottom: 10px"><input id="efternavn-field" name="lastName" type="text" placeholder="Efternavn" th:value="${user.lastName}"></p>
+
+
+  <p style="padding-bottom: 10px"><input id="email-field" name="email" type="text" placeholder="Email" th:value="${user.email}"></p>
+
+
+  <p style="padding-bottom: 10px"><input id="password-field" name="userPassword" type="text" placeholder="Kodeord" th:value="${user.password}"></p>
+
+  <p><input type="submit" value="modify wish"></p>
 </div>
+</form>
 
 
 <footer class="footer">
