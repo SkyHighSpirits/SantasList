@@ -16,6 +16,57 @@
   </ul>
 </nav>
 
+<h1>Opdater dit ønske!</h1>
+
+<div class="table-container">
+    <table class="content-table">
+        <thead>
+        <tr>
+            <th>Ønske</th>
+            <th>Pris</th>
+            <th>Beskrivelse</th>
+            <th>URL</th>
+            <th>Prioritet</th>
+            <th>Reservation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="wish : ${wishes}">
+            <td th:text="${wish.wishName}"></td>
+            <td th:text="${wish.price}"></td>
+            <td th:text="${wish.wishDescription}"></td>
+            <td th:text="${wish.url}"></td>
+            <td th:text="${wish.priority}"></td>
+            <td th:text="${wish.reserved}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<pre>
+    <form action="/update" method="POST">
+        <input id="id" name="wishID" type="hidden" th:value="${wish.wishID}">
+        <label for="wishName">Ønske:</label>
+        <input id="wishName" name="wishName" type="text" th:value="${wish.wishName}"/>
+
+        <label for="price">Pris:</label>
+        <input id="price" name="price" type="number" th:value="${wish.price}"/>
+
+        <label for="wishDescription">Beskrivelse:</label>
+        <input id="wishDescription" name="wishDescription" type="text" th:value="${wish.wishDescription}"/>
+
+        <label for="url">URL:</label>
+        <input id="url"  name="url" type="text" th:value="${wish.url}"/>
+
+        <label for="priority">Prioritet:</label>
+        <input id="priority" name="priority" type="number" th:value="${wish.priority}"/>
+
+        <label for="reserved">Reservation:</label>
+        <input id="reserved" name="reserved" type="number" th:value="${wish.reserved}"/>
+
+        <input type="submit" value="Opdater ønske">
+    </form>
+</pre>
 
 <footer class="footer">
   <div class="container">

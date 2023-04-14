@@ -298,6 +298,10 @@ button:hover{
     transition: .5s;
 }
 
+.table-container{
+    padding: 20px;
+}
+
 
 
 
