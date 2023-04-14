@@ -55,8 +55,8 @@ public class UserRepository {
         try{
             // Connect to database
             Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
-            final String SQL_QUERY ="INSERT INTO users(email, userPassword, firstName, lastName) VALUES (?, ?, ?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
+            final String CREATE_QUERY ="INSERT INTO users(email, userPassword, firstName, lastName) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
             preparedStatement.setString(1, user.getEmail());
             preparedStatement.setString(2, user.getPassword());
