@@ -25,6 +25,13 @@ label.logo{
     padding: 0 100px;
     font-weight: bold;
 }
+label .logo-link{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
 
 nav .nav-ul{
     float: right;
@@ -41,7 +48,7 @@ nav .nav-ul li a{
     color: white;
     font-size: 17px;
     padding: 7px 13px;
-    border-radius: 3px;
+    border-radius: 25px;
     text-transform: uppercase;
 }
 
@@ -64,6 +71,7 @@ a:hover{
     cursor: pointer;
     border-radius: 25px;
     font-weight: bold;
+    box-shadow: 5px 5px 3px #888888;
 }
 
 button:hover{
@@ -187,9 +195,7 @@ button:hover{
     padding: 40px;
     font-size: 2vw;
     text-shadow: 2px 4px 4px rgba(46,91,173,0.6);
-    background: #F9F9FA;
     border-radius: 25px;
-    box-shadow: 5px 5px 3px #888888;
 
 }
 .containerLPtekst2{
@@ -207,5 +213,25 @@ button:hover{
     height: auto;
 
 }
+.containerlogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    padding: 40px;
+    width: 20vw;
+    margin: 0 auto;
+    background: #F9F9FA;
+    border-radius: 25px;
+    box-shadow: 5px 5px 3px #888888;
+    margin-bottom: 100px;
+    margin-top: 25px;
+}
+#ip1{
+    border-radius: 25px;
+    border: 2px solid red;
+    text-align: center;
+}
+
 
 
