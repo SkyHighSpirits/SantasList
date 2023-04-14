@@ -13,14 +13,14 @@ import java.util.List;
 @Repository
 public class UserRepository {
 
-    @Value("$spring.datasosurce.url")
-    private String DB_URL;
+    //@Value("${spring.datasosurce.url}")
+    private String DB_URL = "jdb:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
 
-    @Value("$spring.datasource.username")
-    private String UID;
+    // @Value("{$spring.datasource.username}")
+    private String UID = "santaroot";
 
-    @Value("$spring.datasource.password")
-    private String PWD;
+    // @Value("{$spring.datasource.password}")
+    private String PWD = "#danmark2300";
 
     public List<User> getAllUsers(){
         List<User> userList = new ArrayList<>();
@@ -51,5 +51,24 @@ public class UserRepository {
         }
         return userList;
     }
+    public void addUser(User user){
+        try{
+            // Connect to database
+            Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
+            final String SQL_QUERY ="INSERT INTO users(email, userPassword, firstName, lastName) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE QUERY);
 
+            preparedStatement.setString(1, user.getEmail());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getFirstName());
+            preparedStatement.setString(4, user.getLastName());
+
+            preparedStatement.executeUpdate();
+
+        } catch(SQLException e){
+            System.out.println("Could not create user");
+            e.printStackTrace();
+
+        }
+    }
 }
