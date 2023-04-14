@@ -11,11 +11,41 @@
 <nav>
   <label class="logo">SantasList</label>
   <ul class="nav-ul">
-    <li><a href="#">Opret</a></li>
-    <li><a href="#">Login</a></li>
+    <li><a class="nav-link" href="#">Opret</a></li>
+    <li><a class="nav-link" href="#">Login</a></li>
   </ul>
 </nav>
 
+<div class="table-container">
+  <h1>Ønskeliste!</h1>
+  <br>
+  <a class="table-link" href="/create">Opret nyt ønske</a>
+  <br>
+  <table class="content-table">
+    <thead>
+    <th>Ønske</th>
+    <th>Pris</th>
+    <th>Beskrivelse</th>
+    <th>Link</th>
+    <th>Prioritet</th>
+    <th>Reservation</th>
+    <th>Opdater</th>
+    <th>Slet</th>
+    </thead>
+    <tbody>
+    <tr th:each="wish : ${wishes}">
+      <td th:text="${wish.wishName}"></td>
+      <td th:text="${wish.price}"></td>
+      <td th:text="${wish.wishDescription}"></td>
+      <td th:text="${wish.url}"></td>
+      <td th:text="${wish.priority}"></td>
+      <td th:text="${wish.reserved}"></td>
+      <td> <a class="table-link" th:href="@{'/update/' + ${wish.wishID}}" href="/update">Update</a></td>
+      <td> <a class="table-link" th:href="@{'/delete/' + ${wish.wishID}}" href="/delete">Delete</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
 <footer class="footer">
   <div class="container">
