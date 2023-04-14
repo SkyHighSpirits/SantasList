@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 public class UserRepository {
 
+    int updated = 1;
     @Value("${spring.datasource.url}")
     private String DB_URL; //= "jdb:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
 
