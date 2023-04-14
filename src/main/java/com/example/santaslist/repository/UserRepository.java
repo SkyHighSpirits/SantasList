@@ -13,13 +13,13 @@ import java.util.List;
 @Repository
 public class UserRepository {
 
-    @Value("$spring.datasosurce.url")
+    @Value("${spring.datasosurce.url}")
     private String DB_URL;
 
-    @Value("$spring.datasource.username")
+    @Value("{$spring.datasource.username}")
     private String UID;
 
-    @Value("$spring.datasource.password")
+    @Value("{$spring.datasource.password}")
     private String PWD;
 
     public List<User> getAllUsers(){
