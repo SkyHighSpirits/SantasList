@@ -4,14 +4,70 @@
   <meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" th:href="@{css/cssstyles.css}" href="../static/css/cssstyles.css">
+  <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <nav>
-  <label class="logo">SantasList</label>
-  <ul>
-    <li><a href="#">Opret</a></li>
-    <li><a href="#">Login</a></li>
+  <label ><a class="logo-link" th:href="@{logo}" href="homepage.html">SantasList</a></label>
+  <ul class="nav-ul">
+    <li><a th:href="@{opret}" href="signup.html">Opret</a></li>
+    <li><a th:href="@{login}" href="login.html">Login</a></li>
   </ul>
 </nav>
+
+
+<div class="containerlogin">
+  <input type="text" placeholder="Email" id="ip1">
+  <br />
+  <input type="text" placeholder="Kodeord" id="ip1">
+  <br />
+  <button class="button">Login</button>
+</div>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col">
+        <h4>Virksomhed</h4>
+        <ul class="footer-ul">
+          <li class="footer-li"><a class="footer-link" href="#">Om os</a></li>
+          <li class="footer-li"><a class="footer-link" href="#">Vores service</a></li>
+          <li class="footer-li"><a class="footer-link" href="#">Privat politik</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Få hjælp</h4>
+        <ul class="footer-ul">
+          <li class="footer-li"><a class="footer-link" href="#">FAQ</a></li>
+          <li class="footer-li"><a class="footer-link" href="#">Login</a></li>
+          <li class="footer-li"><a class="footer-link" href="#">Opret</a></li>
+          <li class="footer-li"><a class="footer-link" href="#">How does it work</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt information</h4>
+        <ul class="footer-ul">
+          <li class="footer-li"><a class="footer-link" href="#">Adresse</a></li>
+          <li class="footer-li"><a class="footer-link" href="#">Telefonnummer</a></li>
+          <li class="footer-li"><a class="footer-link" href="#">Email</a></li>
+          <li class="footer-li"><a class="footer-link" href="#">Discord</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Social media</h4>
+        <div class="social-links">
+          <a class="footer-li" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="footer-li" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="footer-li" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="footer-li" href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

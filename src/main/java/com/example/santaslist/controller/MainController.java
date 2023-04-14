@@ -129,7 +129,7 @@ public class MainController {
     public String santaList(UserRepository userRepository, WishRepository wishRepository, Model model)
     {
         // TODO: Implement bellow method wishrepository.getAll()
-        //model.addAttribute("wishes", wishRepository.getAll());
+        model.addAttribute("wishes", wishRepository.getAll());
         return "redirect:/";
     }
 
