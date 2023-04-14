@@ -130,6 +130,11 @@ public class MainController {
     {
         // TODO: Implement bellow method wishrepository.getAll()
         model.addAttribute("wishes", wishRepository.getAll());
+        for(Wish wish : wishRepository.getAll())
+        {
+            System.out.println(wish);
+        }
+        System.out.println();
         return "redirect:/";
     }
 
