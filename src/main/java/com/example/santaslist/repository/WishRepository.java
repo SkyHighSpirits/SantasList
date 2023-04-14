@@ -4,6 +4,7 @@ import com.example.santaslist.model.Wish;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,5 +70,20 @@ public class WishRepository
             System.out.println("Could not create a wish");
             e.printStackTrace();
         }
+    }
+
+    public void deleteWish(Wish wish){
+    try{
+        Connection connection = DriverManager.getConnection(DB_URL, UID,PWD);
+        final String DELETE_QUERY = "DELETE FROM wishes WHERE wishID=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(DELETE_QUERY);
+
+        preparedStatement.setInt(1, wish.getWishID());
+
+        preparedStatement.executeUpdate();
+    }catch(SQLException e){
+        System.out.println("Could not Delete wish");
+        e.printStackTrace();
+    }
     }
 }

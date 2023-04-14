@@ -313,6 +313,10 @@ input[type=submit] {
     transition: .5s;
 }
 
+.table-container{
+    padding: 20px;
+}
+
 
 
 
