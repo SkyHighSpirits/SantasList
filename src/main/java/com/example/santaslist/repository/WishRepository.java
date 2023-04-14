@@ -47,4 +47,27 @@ public class WishRepository
         }
         return wishes;
     }
+
+    public void addWish(Wish wish) {
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
+            final String CREATE_QUERY = "INSERT INTO wishes(userID, wishName, price, priority, wishDescription, url, reserved) VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
+
+            preparedStatement.setInt(1, wish.getUserID());
+            preparedStatement.setString(2, wish.getWishName());
+            preparedStatement.setFloat(3, wish.getPrice());
+            preparedStatement.setInt(4, wish.getPriority());
+            preparedStatement.setString(5, wish.getWishDescription());
+            preparedStatement.setString(6, wish.getUrl());
+            preparedStatement.setBoolean(7, wish.isReserved());
+
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Could not create a wish");
+            e.printStackTrace();
+        }
+    }
 }

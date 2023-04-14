@@ -67,7 +67,7 @@ public class MainController {
     public String createWish(@RequestParam("userID") int theID, @RequestParam("wishName") String newWishName, @RequestParam("price") float newPrice, @RequestParam("priority") int newPriority, @RequestParam("wishDescription") String newWishDescription, @RequestParam("url") String newUrl, @RequestParam("reserved") boolean reserved)
     {
         // TODO: Implement bellow methods in model and in wishdirectory and also the parameters in request param
-        /*
+
         Wish wish = new Wish();
         wish.setUserID(theID);
         wish.setWishName(newWishName);
@@ -75,13 +75,12 @@ public class MainController {
         wish.setPriority(newPriority);
         wish.setWishDescription(newWishDescription);
         wish.setUrl(newUrl);
-        wish.setReserved(newReserved);
+        wish.setReserved(reserved);
 
         wishRepository.addWish(wish);
 
         return "redirect:/";
-         */
-        return "redirect:/";
+
     }
 
     @GetMapping("/modifywish/{number}")
