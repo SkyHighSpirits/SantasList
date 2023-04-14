@@ -52,7 +52,7 @@ nav .nav-ul li a{
     text-transform: uppercase;
 }
 
-a:hover{
+.nav-link:hover{
     background-color: #C12301;
     transition: .5s;
 }
@@ -232,6 +232,72 @@ button:hover{
     border: 2px solid red;
     text-align: center;
 }
+
+
+/*styling of table*/
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+    background-color: red;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 18px 30px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid red;
+}
+
+.content-table td .table-link{
+    background-color: red;
+    color: white;
+    padding: 7px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+}
+.content-table td .table-link:hover{
+    background-color: #C12301;
+    transition: .5s;
+}
+
+.table-container .table-link{
+    background-color: red;
+    color: white;
+    padding: 7px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+}
+
+.table-container .table-link:hover{
+    background-color: #C12301;
+    transition: .5s;
+}
+
 
 
 
