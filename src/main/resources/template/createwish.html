@@ -16,6 +16,31 @@
   </ul>
 </nav>
 
+<h1>Lav et nyt ønske!</h1>
+<pre>
+    <form action="/create" method="POST">
+        <br>
+        <label for="wishName">Ønske:</label>
+        <input id="wishName" type="text" name="wishName"/>
+
+        <label for="price">Pris:</label>
+        <input id="price" type="number" name="price" />
+
+        <label for="wishDescription">Beskrivelse:</label>
+        <input id="wishDescription" type="text" name="wishDescription"/>
+
+        <label for="url">URL:</label>
+        <input id="url" type="text" name="url"/>
+
+        <label for="priority">Prioritet:</label>
+        <input id="priority" type="number" name="priority"/>
+
+        <label for="reserved">Reservation:</label>
+        <input id="reserved" type="text" name="reserved"/>
+
+        <input type="submit" value="Opret ønske">
+    </form>
+</pre>
 
 <footer class="footer">
   <div class="container">
