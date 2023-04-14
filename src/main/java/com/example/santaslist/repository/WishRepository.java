@@ -12,12 +12,12 @@ import java.util.List;
 public class WishRepository
 {
 
-    //@Value("${spring.datasource.url}")
-    private String DB_URL = "jdbc:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
-    //@Value("${spring.datasource.username}")
-    private String UID = "santaroot";
-    //@Value("${spring.datasource.password}")
-    private String PWD = "#danmark2300";
+    @Value("${spring.datasource.url}")
+    private String DB_URL;// = "jdbc:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
+    @Value("${spring.datasource.username}")
+    private String UID;// = "santaroot";
+    @Value("${spring.datasource.password}")
+    private String PWD;// = "#danmark2300";
 
     public List<Wish> getAll(){
         List<Wish> wishes = new ArrayList<>();
