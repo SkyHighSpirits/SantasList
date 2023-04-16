@@ -22,7 +22,7 @@ public class MainController {
 
     }
 
-    @GetMapping("")
+    @GetMapping("/")
     public String homepage(){
         return "homepage";
     }
@@ -34,6 +34,11 @@ public class MainController {
 
     @GetMapping("/signup")
     public String signup(Model model){
+        model.addAttribute("users", wishRepository.getAll());
+        for(User user : userRepository.getAllUsers())
+        {
+            System.out.println(user);
+        }
         User user = new User();
         model.addAttribute("user",user);
         return "signup";
@@ -44,14 +49,14 @@ public class MainController {
         return "createwish";
     }
 
-    @PostMapping("/createUser")
+    @PostMapping("/createuser")
     public String createUser(@RequestParam("email") String newEmail, @RequestParam("userPassword") String newPassword, @RequestParam("firstName") String newFirstName, @RequestParam("lastName") String newLastName)
     {
         // TODO: Implement bellow methods in model and in userdirectory and also the parameters in request param
-        /*
-        User user = new Wish();
+
+        User user = new User();
         user.setEmail(newEmail);
-        user.setPassword(newPassword);
+        user.setUserPassword(newPassword);
         user.setFirstName(newFirstName);
         user.setLastName(newLastName);
 
@@ -59,8 +64,6 @@ public class MainController {
 
         return "redirect:/";
 
-        */
-        return "redirect:/";
     }
 
     @PostMapping("/createWish")

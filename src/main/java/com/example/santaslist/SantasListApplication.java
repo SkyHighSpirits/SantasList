@@ -12,6 +12,7 @@ public class SantasListApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SantasListApplication.class, args);
+
     }
 
 }

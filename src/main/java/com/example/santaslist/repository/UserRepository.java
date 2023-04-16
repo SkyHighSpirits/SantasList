@@ -13,15 +13,15 @@ import java.util.List;
 @Repository
 public class UserRepository {
 
-    int updated = 1;
-    @Value("${spring.datasource.url}")
-    private String DB_URL; //= "jdb:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
 
-    @Value("{$spring.datasource.username}")
+    @Value("${spring.datasource.url}")
+    private String DB_URL;// = "jdbc:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
+
+    @Value("${spring.datasource.username}")
     private String UID;// = "santaroot";
 
-    @Value("{$spring.datasource.password}")
-    private String PWD;// = "#danmark2300";
+    @Value("${spring.datasource.password}")
+    private String PWD;// = "#Danmark2300";
 
     public List<User> getAllUsers(){
         List<User> userList = new ArrayList<>();
@@ -60,7 +60,7 @@ public class UserRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
             preparedStatement.setString(1, user.getEmail());
-            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(2, user.getUserPassword());
             preparedStatement.setString(3, user.getFirstName());
             preparedStatement.setString(4, user.getLastName());
 
