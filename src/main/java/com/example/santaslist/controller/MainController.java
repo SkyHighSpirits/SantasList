@@ -4,22 +4,32 @@ import com.example.santaslist.model.User;
 import com.example.santaslist.model.Wish;
 import com.example.santaslist.repository.UserRepository;
 import com.example.santaslist.repository.WishRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+
+@ControllerAdvice
 @Controller
 public class MainController {
 
     UserRepository userRepository;
     WishRepository wishRepository;
+
+    @ModelAttribute("currentuser")
+    public User getCurrentUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        User currentUser = (User) session.getAttribute("currentUser");
+        return currentUser;
+    }
+
     public MainController(UserRepository userRepository, WishRepository wishRepository){
         this.userRepository = userRepository;
         this.wishRepository = wishRepository;
-
     }
 
     @GetMapping("/")
@@ -27,14 +37,34 @@ public class MainController {
         return "homepage";
     }
 
+    @PostMapping("/loginuser")
+    public String loginUser(@RequestParam("email") String checkEmail, @RequestParam("userPassword") String checkPassword, Model model, HttpSession session){
+        User user = new User();
+        model.addAttribute("user",user);
+        for (User checkuser: userRepository.getAllUsers()) {
+            String actualEmail = checkuser.getEmail();
+            String actualPassword = checkuser.getUserPassword();
+            if(actualPassword.equals(checkPassword) && actualEmail.equals(checkEmail))
+            {
+                model.addAttribute("currentuser",checkuser);
+                session.setAttribute("currentuser", checkuser);
+                return "santalist";
+            }
+        }
+        return "login";
+    }
+
     @GetMapping("/login")
     public String login(Model model){
+        User user = new User();
+        model.addAttribute("user",user);
         return "login";
     }
 
     @GetMapping("/signup")
     public String signup(Model model){
         model.addAttribute("users", wishRepository.getAll());
+        //testdata
         for(User user : userRepository.getAllUsers())
         {
             System.out.println(user);
@@ -128,10 +158,11 @@ public class MainController {
 
 
     @GetMapping("/santalist")
-    public String santaList(UserRepository userRepository, WishRepository wishRepository, Model model)
+    public String santaList(Model model)
     {
         // TODO: Implement bellow method wishrepository.getAll()
         model.addAttribute("wishes", wishRepository.getAll());
+        //testdata
         for(Wish wish : wishRepository.getAll())
         {
             System.out.println(wish);

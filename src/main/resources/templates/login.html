@@ -16,17 +16,17 @@
   </ul>
 </nav>
 
-
-<div class="containerlogin">
-  <input type="text" placeholder="Email" id="ip1">
-  <br />
-  <input type="text" placeholder="Kodeord" id="ip1">
-  <br />
-  <button class="button">Login</button>
-</div>
+<form action="loginuser" method="post">
+  <div class="containerlogin">
+    <h3>Log på som</h3>
+    <p style="padding-bottom: 10px"><input id="login-email-field" name="email" type="text" placeholder="Email" th:value="${user.email}"></p>
 
 
+    <p style="padding-bottom: 10px"><input id="login-password-field" name="userPassword" type="text" placeholder="Kodeord" th:value="${user.userPassword}"></p>
 
+    <p><input type="submit" value="Login"></p>
+  </div>
+</form>
 
 <footer class="footer">
   <div class="container">
