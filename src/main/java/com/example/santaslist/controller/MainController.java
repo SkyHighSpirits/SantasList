@@ -23,7 +23,14 @@ public class MainController {
     @ModelAttribute("currentuser")
     public User getCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        User currentUser = (User) session.getAttribute("currentUser");
+        User currentUser = (User) session.getAttribute("currentuser");
+        return currentUser;
+    }
+
+    @ModelAttribute("searcheduser")
+    public User getSearchedUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        User currentUser = (User) session.getAttribute("searcheduser");
         return currentUser;
     }
 
@@ -178,13 +185,34 @@ public class MainController {
     public String santaList(Model model)
     {
         // TODO: Implement bellow method wishrepository.getAll()
+
+
         model.addAttribute("wishes", wishRepository.getAll());
+
+        return "santalist";
+    }
+
+    @PostMapping("/searchuser")
+    public String searchforSantaListUsingEmail(Model model, @RequestParam("email") String email, HttpSession session)
+    {
+        // TODO: Implement bellow method wishrepository.getAll()
+
         //testdata
-        for(Wish wish : wishRepository.getAll())
+        int id = -10;
+        for(User user : userRepository.getAllUsers())
         {
-            System.out.println(wish);
+            if(email.equals(user.getEmail()))
+            {
+                model.addAttribute("searchuser",user);
+                session.setAttribute("searchuser", user);
+                id = user.getUserID();
+            }
+            System.out.println(user);
         }
         System.out.println();
+
+        model.addAttribute("wishes", wishRepository.getAllForUser(id));
+
         return "santalist";
     }
 

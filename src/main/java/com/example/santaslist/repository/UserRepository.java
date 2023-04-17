@@ -1,6 +1,7 @@
 package com.example.santaslist.repository;
 
 import com.example.santaslist.model.User;
+import com.example.santaslist.model.Wish;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
@@ -72,4 +73,5 @@ public class UserRepository {
 
         }
     }
+
 }

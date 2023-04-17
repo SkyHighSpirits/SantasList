@@ -85,6 +85,8 @@ public class WishRepository
     }
 
 
+
+
     public List<Wish> getAllForUser(int Id){
         List<Wish> wishes = new ArrayList<>();
         try {
