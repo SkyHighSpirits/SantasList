@@ -20,6 +20,8 @@ public class MainController {
     UserRepository userRepository;
     WishRepository wishRepository;
 
+    int currentUserID = -10;
+
     @ModelAttribute("currentuser")
     public User getCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -48,7 +50,9 @@ public class MainController {
             {
                 model.addAttribute("currentuser",checkuser);
                 session.setAttribute("currentuser", checkuser);
-                return "santalist";
+                User currentuser = (User) session.getAttribute("currentuser");
+                System.out.println(currentuser);
+                return "redirect:/santalist/" + checkuser.getUserID();
             }
         }
         return "login";
@@ -169,6 +173,15 @@ public class MainController {
         }
         System.out.println();
         return "redirect:/";
+    }
+
+    @GetMapping("/santalist/{id}")
+    public String santaListForSpecificUser(@PathVariable("id") int userID, Model model)
+    {
+        // TODO: Implement bellow method wishrepository.getAll()
+        model.addAttribute("wishes", wishRepository.getAllForUser(userID));
+        //testdata
+        return "santalist";
     }
 
 }

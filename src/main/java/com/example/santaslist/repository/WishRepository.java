@@ -26,7 +26,7 @@ public class WishRepository
         try {
             Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
             Statement statement = connection.createStatement();
-            final String SQL_QUERY = "SELECT * FROM wishes WHERE userID = Id";
+            final String SQL_QUERY = "SELECT * FROM wishes WHERE userID = " + Id;
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
             while (resultSet.next()){
                 int wishID = resultSet.getInt(1);
