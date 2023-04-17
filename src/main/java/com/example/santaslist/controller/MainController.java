@@ -56,6 +56,8 @@ public class MainController {
         return "login";
     }
 
+
+
     @GetMapping("/login")
     public String login(Model model){
         User user = new User();
@@ -145,7 +147,20 @@ public class MainController {
         return "redirect:/";
     }
 
+    @PostMapping("/reserve")
+    public String reserveWish(@RequestParam("reserved") boolean reserved, @RequestParam("wishId") int wishID)
+    {
+        // Fetch the Wish object from the repository using the wishID
+        Wish wish = wishRepository.findById(wishID);
 
+        // Set the reserved status of the wish
+        wish.setReserved(reserved);
+
+        // Update the Wish object in the repository
+        wishRepository.updateWish(wish);
+
+        return "redirect:/santalist";
+    }
 
     @GetMapping("/delete/{number}")
     public String deleteWish(@PathVariable("number") int number)
@@ -170,7 +185,7 @@ public class MainController {
             System.out.println(wish);
         }
         System.out.println();
-        return "redirect:/";
+        return "santalist";
     }
 
     @GetMapping("/santalist/{id}")

@@ -8,97 +8,207 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<nav>
-  <label class="logo">SantasList</label>
-  <ul class="nav-ul">
-    <li><a class="nav-link" href="#">Opret</a></li>
-    <li><a class="nav-link" href="#">Skift Bruger</a></li>
-  </ul>
-</nav>
+<div th:if="${session.currentuser}">
+  <nav>
+    <label class="logo">SantasList</label>
+    <ul class="nav-ul">
+      <li><a class="nav-link" href="#">Opret</a></li>
+      <li><a class="nav-link" href="#">Skift Bruger</a></li>
+    </ul>
+  </nav>
 
-<div class="table-container">
-  <h1>Ønskeliste!</h1>
-  <div th:if="${session.currentuser}">
-    <span>Velkommen til din ønskeliste </span><span th:text="${session.currentuser.getFirstName()}"></span>
+  <div class="table-container">
+    <h1>Ønskeliste!</h1>
+    <div th:if="${session.currentuser}">
+      <span>Velkommen til din ønskeliste </span><span th:text="${session.currentuser.getFirstName()}"></span>
+    </div>
+    <br>
+    <a class="table-link" href="/create">Opret nyt ønske</a>
+    <br>
+    <table class="content-table">
+      <thead>
+      <th>Ønske</th>
+      <th>Pris</th>
+      <th>Beskrivelse</th>
+      <th>Link</th>
+      <th>Prioritet</th>
+      <th>Reservation</th>
+      <th>Opdater</th>
+      <th>Slet</th>
+      </thead>
+      <tbody>
+      <tr th:each="wish : ${wishes}">
+        <td th:text="${wish.wishName}"></td>
+        <td th:text="${wish.price} + ' Kr'"></td>
+        <td th:text="${wish.wishDescription}"></td>
+        <td th:text="${wish.url}"></td>
+        <td th:text="${wish.priority} + ' af 5'"></td>
+        <td>
+          <div th:if="${wish.reserved}">
+            Er Reserveret
+          </div>
+          <!-- ELSE -->
+          <div th:unless="${wish.reserved}">
+            Ikke Reserveret
+          </div>
+        </td>
+        <!--<td th:text="Er Reserveret"></td>-->
+        <td> <a class="table-link" th:href="@{'/update/' + ${wish.wishID}}" href="/update">Update</a></td>
+        <td> <a class="table-link" th:href="@{'/delete/' + ${wish.wishID}}" href="/delete">Delete</a></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-  <br>
-  <a class="table-link" href="/create">Opret nyt ønske</a>
-  <br>
-  <table class="content-table">
-    <thead>
-    <th>Ønske</th>
-    <th>Pris</th>
-    <th>Beskrivelse</th>
-    <th>Link</th>
-    <th>Prioritet</th>
-    <th>Reservation</th>
-    <th>Opdater</th>
-    <th>Slet</th>
-    </thead>
-    <tbody>
-    <tr th:each="wish : ${wishes}">
-      <td th:text="${wish.wishName}"></td>
-      <td th:text="${wish.price} + ' Kr'"></td>
-      <td th:text="${wish.wishDescription}"></td>
-      <td th:text="${wish.url}"></td>
-      <td th:text="${wish.priority} + ' af 5'"></td>
-      <td>
-        <div th:if="${wish.reserved}">
-          Er Reserveret
-        </div>
-        <!-- ELSE -->
-        <div th:unless="${wish.reserved}">
-          Ikke Reserveret
-        </div>
-      </td>
-      <!--<td th:text="Er Reserveret"></td>-->
-      <td> <a class="table-link" th:href="@{'/update/' + ${wish.wishID}}" href="/update">Update</a></td>
-      <td> <a class="table-link" th:href="@{'/delete/' + ${wish.wishID}}" href="/delete">Delete</a></td>
-    </tr>
-    </tbody>
-  </table>
-</div>
 
-<footer class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="footer-col">
-        <h4>Virksomhed</h4>
-        <ul class="footer-ul">
-          <li class="footer-li"><a class="footer-link" href="#">Om os</a></li>
-          <li class="footer-li"><a class="footer-link" href="#">Vores service</a></li>
-          <li class="footer-li"><a class="footer-link" href="#">Privat politik</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Få hjælp</h4>
-        <ul class="footer-ul">
-          <li class="footer-li"><a class="footer-link" href="#">FAQ</a></li>
-          <li class="footer-li"><a class="footer-link" href="#">Login</a></li>
-          <li class="footer-li"><a class="footer-link" href="#">Opret</a></li>
-          <li class="footer-li"><a class="footer-link" href="#">How does it work</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Kontakt information</h4>
-        <ul class="footer-ul">
-          <li class="footer-li"><a class="footer-link" href="#">Adresse</a></li>
-          <li class="footer-li"><a class="footer-link" href="#">Telefonnummer</a></li>
-          <li class="footer-li"><a class="footer-link" href="#">Email</a></li>
-          <li class="footer-li"><a class="footer-link" href="#">Discord</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Social media</h4>
-        <div class="social-links">
-          <a class="footer-li" href="#"><i class="fab fa-facebook-f"></i></a>
-          <a class="footer-li" href="#"><i class="fab fa-twitter"></i></a>
-          <a class="footer-li" href="#"><i class="fab fa-instagram"></i></a>
-          <a class="footer-li" href="#"><i class="fab fa-linkedin-in"></i></a>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>Virksomhed</h4>
+          <ul class="footer-ul">
+            <li class="footer-li"><a class="footer-link" href="#">Om os</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Vores service</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Privat politik</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Få hjælp</h4>
+          <ul class="footer-ul">
+            <li class="footer-li"><a class="footer-link" href="#">FAQ</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Login</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Opret</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">How does it work</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt information</h4>
+          <ul class="footer-ul">
+            <li class="footer-li"><a class="footer-link" href="#">Adresse</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Telefonnummer</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Email</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Discord</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Social media</h4>
+          <div class="social-links">
+            <a class="footer-li" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="footer-li" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="footer-li" href="#"><i class="fab fa-instagram"></i></a>
+            <a class="footer-li" href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
       </div>
     </div>
+  </footer>
+</div>
+<div th:unless="${session.currentuser}">
+  <nav>
+    <label class="logo">SantasList</label>
+    <ul class="nav-ul">
+      <li><a class="nav-link" href="#">Opret</a></li>
+      <li><a class="nav-link" href="#">Skift Bruger</a></li>
+    </ul>
+  </nav>
+
+  <div class="table-container">
+    <h1>Ønskeliste!</h1>
+    <div th:if="${session.currentuser}">
+      <span>Velkommen til ønskelisten for </span><span th:text="${session.currentuser.getFirstName()}"></span>
+    </div>
+    <br>
+    <a class="table-link" href="/create">Opret nyt ønske</a>
+    <br>
+    <table class="content-table">
+      <thead>
+      <th>Ønske</th>
+      <th>Pris</th>
+      <th>Beskrivelse</th>
+      <th>Link</th>
+      <th>Prioritet</th>
+      <th>Reservation</th>
+      <th>Reservér</th>
+      <th>Fjern Reservering</th>
+      </thead>
+      <tbody>
+      <tr th:each="wish : ${wishes}">
+        <td th:text="${wish.wishName}"></td>
+        <td th:text="${wish.price} + ' Kr'"></td>
+        <td th:text="${wish.wishDescription}"></td>
+        <td th:text="${wish.url}"></td>
+        <td th:text="${wish.priority} + ' af 5'"></td>
+        <td>
+          <div th:if="${wish.reserved}">
+            Er Reserveret
+          </div>
+          <!-- ELSE -->
+          <div th:unless="${wish.reserved}">
+            Ikke Reserveret
+          </div>
+        </td>
+        <!--<td th:text="Er Reserveret"></td>-->
+
+        <td>
+          <form th:action="@{/reserve}" method="post">
+            <input type="hidden" name="wishId" th:value="${wish.wishID}" />
+            <input type="hidden" name="reserved" th:value="true" />
+            <button type="submit" class="table-link">Reservér</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{/reserve}" method="post">
+            <input type="hidden" name="wishId" th:value="${wish.wishID}" />
+            <input type="hidden" name="reserved" th:value="false" />
+            <button type="submit" class="table-link">Fjern Reservering</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-</footer>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>Virksomhed</h4>
+          <ul class="footer-ul">
+            <li class="footer-li"><a class="footer-link" href="#">Om os</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Vores service</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Privat politik</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Få hjælp</h4>
+          <ul class="footer-ul">
+            <li class="footer-li"><a class="footer-link" href="#">FAQ</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Login</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Opret</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">How does it work</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt information</h4>
+          <ul class="footer-ul">
+            <li class="footer-li"><a class="footer-link" href="#">Adresse</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Telefonnummer</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Email</a></li>
+            <li class="footer-li"><a class="footer-link" href="#">Discord</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Social media</h4>
+          <div class="social-links">
+            <a class="footer-li" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="footer-li" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="footer-li" href="#"><i class="fab fa-instagram"></i></a>
+            <a class="footer-li" href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
 </body>
 </html>
