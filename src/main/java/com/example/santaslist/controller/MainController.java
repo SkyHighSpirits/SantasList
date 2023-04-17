@@ -20,8 +20,6 @@ public class MainController {
     UserRepository userRepository;
     WishRepository wishRepository;
 
-    int currentUserID = -10;
-
     @ModelAttribute("currentuser")
     public User getCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();

@@ -38,11 +38,20 @@
     <tbody>
     <tr th:each="wish : ${wishes}">
       <td th:text="${wish.wishName}"></td>
-      <td th:text="${wish.price}"></td>
+      <td th:text="${wish.price} + ' Kr'"></td>
       <td th:text="${wish.wishDescription}"></td>
       <td th:text="${wish.url}"></td>
-      <td th:text="${wish.priority}"></td>
-      <td th:text="${wish.reserved}"></td>
+      <td th:text="${wish.priority} + ' af 5'"></td>
+      <td>
+        <div th:if="${wish.reserved}">
+          Er Reserveret
+        </div>
+        <!-- ELSE -->
+        <div th:unless="${wish.reserved}">
+          Ikke Reserveret
+        </div>
+      </td>
+      <!--<td th:text="Er Reserveret"></td>-->
       <td> <a class="table-link" th:href="@{'/update/' + ${wish.wishID}}" href="/update">Update</a></td>
       <td> <a class="table-link" th:href="@{'/delete/' + ${wish.wishID}}" href="/delete">Delete</a></td>
     </tr>
