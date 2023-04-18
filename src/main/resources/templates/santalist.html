@@ -23,7 +23,7 @@
       <span>Velkommen til din ønskeliste </span><span th:text="${session.currentuser.getFirstName()}"></span>
     </div>
     <br>
-    <a class="table-link" href="/create">Opret nyt ønske</a>
+    <a class="table-link" th:href="@{/showCreateWish}" href="/createwish.html">Opret nyt ønske</a>
     <br>
     <table class="content-table">
       <thead>
