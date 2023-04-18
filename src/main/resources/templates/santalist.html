@@ -18,9 +18,9 @@
   </nav>
 
   <div class="table-container">
-    <h1>Ønskeliste!</h1>
+    <p style="font-size: 28px" >Ønskeliste!</p>
     <div th:if="${session.currentuser}">
-      <span>Velkommen til din ønskeliste </span><span th:text="${session.currentuser.getFirstName()}"></span>
+      <p class="undertitle" th:text="'Velkommen til din ønskeliste ' + ${session.currentuser.getFirstName()}"></p>
     </div>
     <br>
     <a class="table-link" th:href="@{/showCreateWish}" href="/createwish.html">Opret nyt ønske</a>
@@ -115,7 +115,7 @@
   <div class="table-container">
     <h1>Ønskeliste!</h1>
     <div th:if="${session.searchuser}">
-      <span>Velkommen til </span><span th:text="${session.searchuser.getFirstName()}"></span><span th:text="' ' + ${session.searchuser.getLastName()} + 's' + ' ønskeliste'"></span>
+      <p class="undertitle" th:text="'Velkommen til ' + ${session.searchuser.getFirstName()} + ' ' + ${session.searchuser.getLastName()} + 's' + ' ønskeliste'"></p>
     </div>
     <br>
     <br>

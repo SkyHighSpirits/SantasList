@@ -18,20 +18,20 @@
 
 <div class="outer-container">
     <div>
-        <h1 class="containerLPtekst1">
+        <p style="font-size: 28px" class="containerLPtekst1">
             Juleønsker bliver til virkelighed med Santa's ønskeseddel
-        </h1>
-        <h2 class="containerLPtekst2">
+        </p>
+        <p style="font-size: 18px " class="containerLPtekst2">
             Hos Santa's ønskeseddel kan du lave en personlig ønskeseddel og dele den med dem, du holder af. Så kan du være sikker på, at du får præcis det, du ønsker dig til jul!
-        </h2>
+        </p>
         <div>
-            <button class="button">Opret</button>
+            <button style="margin-left: 30px " class="button">Opret</button>
             <p></p>
             <p></p>
-            <h2 class="containerLPtekst2">
-                Du kan også finde en ønskeliste ved at indtaste den pågældende persons email nedenfor
-            </h2>
-            <form th:action="@{/searchuser}" method="post">
+            <p style="font-size: 18px" class="containerLPtekst2">
+                Du kan også finde de andres jule-ønskeliste ved at intaste deres email nedenfor
+            </p>
+            <form style="margin-left: 30px " th:action="@{/searchuser}" method="post">
                 <input style="font-size: 28px" type="text" name="email" />
                 <br>
                 <br>
@@ -46,6 +46,11 @@
 <img th:src="@{images/oenskeseddel.webp}" src="../static/images/oenskeseddel.webp" alt="ønskeseddel" class="responsive">
     </div>
 </div>
+
+<br>
+<br>
+<br>
+
 <footer class="footer">
     <div class="container">
         <div class="row">

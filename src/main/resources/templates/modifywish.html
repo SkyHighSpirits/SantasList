@@ -16,12 +16,11 @@
 </nav>
 
 <div class="table-container">
-    <h1>Opdater dit ønske!</h1>
+    <p style="font-size: 28px">Opdater dit ønske!</p>
     <div th:if="${session.currentuser}">
-        <span>Hej </span><span th:text="${session.currentuser.getFirstName()} + '. Her kan du opdatere dit ønske!'"></span>
+        <p class="undertitle" th:text="'Hej ' + ${session.currentuser.getFirstName()} + '. Her kan du opdatere dit ønske!'"></p>
     </div>
 </div>
-
 
 <div class="table-container">
     <table class="content-table">
@@ -49,9 +48,9 @@
     <input id="wishid_field" name="wishID" type="hidden" th:value="${wish.wishID}"/>
     <input id="userid_field" name="userID" type="hidden" th:value="${wish.userID}"/>
     <input id="reservation" name="reserved" type="hidden" th:value="${wish.reserved}"/>
-            <pre>
+
     <input type="submit" value="Opdater ønske">
-            </pre>
+
     </form>
     </table>
 </div>
