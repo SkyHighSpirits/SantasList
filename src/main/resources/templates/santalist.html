@@ -10,9 +10,9 @@
 <body>
 <div th:if="${session.currentuser}">
   <nav>
-    <label class="logo">SantasList</label>
+    <label ><a class="logo-link" th:href="@{/}" href="homepage.html">SantasList</a></label>
     <ul class="nav-ul">
-      <li><a class="nav-link" href="#">Opret</a></li>
+      <li><a th:href="@{signup}" href="signup.html">Opret</a></li>
       <li><a class="nav-link" href="#">Skift Bruger</a></li>
     </ul>
   </nav>
