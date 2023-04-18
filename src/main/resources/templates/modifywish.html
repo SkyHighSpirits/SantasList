@@ -15,7 +15,13 @@
   </ul>
 </nav>
 
-<h1>Opdater dit ønske!</h1>
+<div class="table-container">
+    <h1>Opdater dit ønske!</h1>
+    <div th:if="${session.currentuser}">
+        <span>Hej </span><span th:text="${session.currentuser.getFirstName()} + '. Her kan du opdatere dit ønske!'"></span>
+    </div>
+</div>
+
 
 <div class="table-container">
     <table class="content-table">
