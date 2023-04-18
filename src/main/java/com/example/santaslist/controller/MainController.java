@@ -129,36 +129,37 @@ public class MainController {
 
     }
 
-    @GetMapping("/modifywish/{number}")
-    public String showModifiedWish(@PathVariable("number") int updateNumber, Model model)
+    @GetMapping("/modifywish/{wishID}")
+    public String showModifiedWish(@PathVariable("wishID") int updateNumber, Model model)
     {
         // TODO: Implement bellow methods
-        /*
-        Wish updateWish = WishRepository.findWishByNumber(updateNumber);
+        Wish updateWish = wishRepository.findById(updateNumber);
 
         model.addAttribute("wish", updateWish);
 
-
-
-         */
         return "modifywish";
     }
 
-    @GetMapping("/modifywish")
-    public String modifyWish(@RequestParam("userID") int theID, @RequestParam("wishName") String updateWishName, @RequestParam("price") float updatePrice, @RequestParam("priority") int updatePriority, @RequestParam("wishDescription") String updateWishDescription, @RequestParam("url") String updateUrl, @RequestParam("reserved") boolean updateReserved)
+    @PostMapping("/modifywish")
+    public String modifyWish(@RequestParam("wishID") int wishID,
+                             @RequestParam("userID") int theID,
+                             @RequestParam("wishName") String updateWishName,
+                             @RequestParam("price") float updatePrice,
+                             @RequestParam("priority") int updatePriority,
+                             @RequestParam("wishDescription") String updateWishDescription,
+                             @RequestParam("url") String updateUrl,
+                             @RequestParam("reserved") boolean updateReserved, HttpSession session)
     {
         // TODO: Implement bellow methods
-        /*
-        Wish updateWish = new Wish(theID, updateWishName, updatePrice, updatePriority, updateWishDescription, updateUrl, updateReserved);
+        Wish updateWish = new Wish(wishID ,theID, updateWishName, updatePrice, updatePriority,
+        updateWishDescription, updateUrl, updateReserved);
 
         wishRepository.updateWish(updateWish);
         User currentuser = (User) session.getAttribute("currentuser");
         int id = currentuser.getUserID();
 
 
-         */
-
-        return "redirect:/santalist/"; //+ id;
+        return "redirect:/santalist/"+ id;
     }
 
     @PostMapping("/reserve")
