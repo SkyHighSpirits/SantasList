@@ -9,11 +9,11 @@
 </head>
 <body>
 <nav>
-  <label class="logo">SantasList</label>
-  <ul class="nav-ul">
-    <li><a href="#">Opret</a></li>
-    <li><a href="#">Login</a></li>
-  </ul>
+    <label ><a class="logo-link" th:href="@{/}" href="homepage.html">SantasList</a></label>
+    <ul class="nav-ul">
+        <li><a class="nav-link" th:href="@{/signup}" href="signup.html">Opret</a></li>
+        <li><a class="nav-link" th:href="@{/login}" href="login.html">Skift Bruger</a></li>
+    </ul>
 </nav>
 
 <h1>Lav et nyt ønske!</h1>

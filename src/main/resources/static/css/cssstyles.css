@@ -134,7 +134,7 @@ button:hover{
     color: #ffffff;
     text-decoration: none;
     font-weight: 300;
-    color: #bbbbbb;
+    color: #F1F1F1;
     display: block;
     transition: all 0.3s ease;
     border-radius: 12px;
@@ -258,7 +258,7 @@ input[type=submit] {
     cursor: pointer;
     border-radius: 25px;
     font-weight: bold;
-    box-shadow: 5px 5px 3px #888888;
+    box-shadow: 5px 5px 3px #F1F1F1;
 }
 
 /*styling of table*/
