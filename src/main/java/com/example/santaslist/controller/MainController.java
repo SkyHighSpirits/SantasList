@@ -76,12 +76,12 @@ public class MainController {
     public String signup(Model model){
         model.addAttribute("users", wishRepository.getAll());
         //testdata
-        for(User user : userRepository.getAllUsers())
-        {
-            System.out.println(user);
-        }
         User user = new User();
         model.addAttribute("user",user);
+        for(User user1 : userRepository.getAllUsers())
+        {
+            System.out.println(user1);
+        }
         return "signup";
     }
 
@@ -108,7 +108,7 @@ public class MainController {
     }
 
     @PostMapping("/createWish")
-    public String createWish(@RequestParam("userID") int theID, @RequestParam("wishName") String newWishName, @RequestParam("price") float newPrice, @RequestParam("priority") int newPriority, @RequestParam("wishDescription") String newWishDescription, @RequestParam("url") String newUrl, @RequestParam("reserved") boolean reserved)
+    public String createWish(@RequestParam("userID") int theID, @RequestParam("wishName") String newWishName, @RequestParam("price") float newPrice, @RequestParam("priority") int newPriority, @RequestParam("wishDescription") String newWishDescription, @RequestParam("url") String newUrl, @RequestParam("reserved") boolean reserved, HttpSession session)
     {
         // TODO: Implement bellow methods in model and in wishdirectory and also the parameters in request param
 
@@ -122,8 +122,10 @@ public class MainController {
         wish.setReserved(reserved);
 
         wishRepository.addWish(wish);
+        User currentuser = (User) session.getAttribute("currentuser");
+        int id = currentuser.getUserID();
 
-        return "redirect:/";
+        return "redirect:/santalist/" + id;
 
     }
 
@@ -135,6 +137,8 @@ public class MainController {
         Wish updateWish = WishRepository.findWishByNumber(updateNumber);
 
         model.addAttribute("wish", updateWish);
+
+
 
          */
         return "modifywish";
@@ -148,14 +152,17 @@ public class MainController {
         Wish updateWish = new Wish(theID, updateWishName, updatePrice, updatePriority, updateWishDescription, updateUrl, updateReserved);
 
         wishRepository.updateWish(updateWish);
+        User currentuser = (User) session.getAttribute("currentuser");
+        int id = currentuser.getUserID();
+
 
          */
 
-        return "redirect:/";
+        return "redirect:/santalist/"; //+ id;
     }
 
     @PostMapping("/reserve")
-    public String reserveWish(@RequestParam("reserved") boolean reserved, @RequestParam("wishId") int wishID)
+    public String reserveWish(@RequestParam("reserved") boolean reserved, @RequestParam("wishId") int wishID, HttpSession session)
     {
         // Fetch the Wish object from the repository using the wishID
         Wish wish = wishRepository.findById(wishID);
@@ -165,32 +172,39 @@ public class MainController {
 
         // Update the Wish object in the repository
         wishRepository.updateWish(wish);
+        User currentuser = (User) session.getAttribute("searchuser");
+        int id = currentuser.getUserID();
 
-        return "redirect:/santalist";
+        return "redirect:/santalist/" + id;
     }
 
     @GetMapping("/delete/{wishID}")
-    public String deleteWish(@PathVariable("wishID") int number)
+    public String deleteWish(@PathVariable("wishID") int number, HttpSession session)
     {
         // TODO: Implement bellow method
 
         wishRepository.deleteWish(wishRepository.findById(number));
+        User currentuser = (User) session.getAttribute("currentuser");
+        int id = currentuser.getUserID();
 
-
-        return "redirect:/santalist";
+        return "redirect:/santalist/" + id;
     }
 
 
-    @GetMapping("/santalist")
-    public String santaList(Model model)
+    /*@GetMapping("/santalist")
+    public String santaList(Model model, HttpSession session)
     {
         // TODO: Implement bellow method wishrepository.getAll()
 
 
         model.addAttribute("wishes", wishRepository.getAll());
+        User currentuser = (User) session.getAttribute("currentuser");
+        int id = currentuser.getUserID();
 
-        return "santalist";
+        return "redirect:/santalist/" + id;
     }
+
+     */
 
     @PostMapping("/searchuser")
     public String searchforSantaListUsingEmail(Model model, @RequestParam("email") String email, HttpSession session)
@@ -205,6 +219,7 @@ public class MainController {
             {
                 model.addAttribute("searchuser",user);
                 session.setAttribute("searchuser", user);
+                session.setAttribute("currentuser", null);
                 id = user.getUserID();
             }
             System.out.println(user);
