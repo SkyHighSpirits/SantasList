@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Ændre ønske</title>
-  <link rel="stylesheet" th:href="@{css/cssstyles.css}" href="../static/css/cssstyles.css">
+  <link rel="stylesheet" th:href="@{/css/cssstyles.css}" href="../static/css/cssstyles.css">
   <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,8 +11,7 @@
 <nav>
   <label class="logo">SantasList</label>
   <ul class="nav-ul">
-    <li><a href="#">Opret</a></li>
-    <li><a href="#">Login</a></li>
+    <li><a class="nav-link" th:href="@{/login}" href="signup.html">Skift bruger</a></li>
   </ul>
 </nav>
 
@@ -22,6 +21,8 @@
     <table class="content-table">
         <thead>
         <tr>
+            <th>wishID</th>
+            <th>userID</th>
             <th>Ønske</th>
             <th>Pris</th>
             <th>Beskrivelse</th>
@@ -31,7 +32,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="wish : ${wishes}">
+        <tr>
+            <td th:text="${wish.wishID}"></td>
+            <td th:text="${wish.userID}"></td>
             <td th:text="${wish.wishName}"></td>
             <td th:text="${wish.price}"></td>
             <td th:text="${wish.wishDescription}"></td>
@@ -44,8 +47,9 @@
 </div>
 
 <pre>
-    <form action="/update" method="POST">
-        <input id="id" name="wishID" type="hidden" th:value="${wish.wishID}">
+    <form action="/modifywish" method="POST">
+        <input id="wishid_field" name="wishID" type="hidden" th:value="${wish.wishID}"/>
+        <input id="userid_field" name="userID" type="hidden" th:value="${wish.userID}"/>
         <label for="wishName">Ønske:</label>
         <input id="wishName" name="wishName" type="text" th:value="${wish.wishName}"/>
 
@@ -60,9 +64,7 @@
 
         <label for="priority">Prioritet:</label>
         <input id="priority" name="priority" type="number" th:value="${wish.priority}"/>
-
-        <label for="reserved">Reservation:</label>
-        <input id="reserved" name="reserved" type="number" th:value="${wish.reserved}"/>
+        <input id="reservation" name="reserved" type="hidden" th:value="${wish.reserved}"/>
 
         <input type="submit" value="Opdater ønske">
     </form>
