@@ -84,11 +84,13 @@ public class MainController {
         }
         return "signup";
     }
-
+/*
     @GetMapping("/createwish")
     public String showCreate(){
         return "createwish";
     }
+
+ */
 
     @PostMapping("/createuser")
     public String createUser(@RequestParam("email") String newEmail, @RequestParam("userPassword") String newPassword, @RequestParam("firstName") String newFirstName, @RequestParam("lastName") String newLastName)
@@ -106,24 +108,29 @@ public class MainController {
         return "redirect:/";
 
     }
-
+    @GetMapping("/showCreateWish")
+    public String showCreateWish (Model model){
+       Wish wish  = new Wish();
+        model.addAttribute("wish",wish);
+        return "createwish";
+    }
     @PostMapping("/createWish")
-    public String createWish(@RequestParam("userID") int theID, @RequestParam("wishName") String newWishName, @RequestParam("price") float newPrice, @RequestParam("priority") int newPriority, @RequestParam("wishDescription") String newWishDescription, @RequestParam("url") String newUrl, @RequestParam("reserved") boolean reserved, HttpSession session)
+    public String createWish(@RequestParam("wishName") String newWishName, @RequestParam("price") float newPrice, @RequestParam("priority") int newPriority, @RequestParam("wishDescription") String newWishDescription, @RequestParam("url") String newUrl, HttpSession session)
     {
         // TODO: Implement bellow methods in model and in wishdirectory and also the parameters in request param
+        User currentuser = (User) session.getAttribute("currentuser");
+        int id = currentuser.getUserID();
 
         Wish wish = new Wish();
-        wish.setUserID(theID);
+        wish.setUserID(id);
         wish.setWishName(newWishName);
         wish.setPrice(newPrice);
         wish.setPriority(newPriority);
         wish.setWishDescription(newWishDescription);
         wish.setUrl(newUrl);
-        wish.setReserved(reserved);
+        wish.setReserved(false);
 
         wishRepository.addWish(wish);
-        User currentuser = (User) session.getAttribute("currentuser");
-        int id = currentuser.getUserID();
 
         return "redirect:/santalist/" + id;
 
