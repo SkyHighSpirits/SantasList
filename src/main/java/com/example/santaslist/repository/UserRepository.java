@@ -2,6 +2,7 @@ package com.example.santaslist.repository;
 
 import com.example.santaslist.model.User;
 import com.example.santaslist.model.Wish;
+import com.example.santaslist.utility.DatabaseConnector;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class UserRepository {
 
 
-    @Value("${spring.datasource.url}")
+    /* @Value("${spring.datasource.url}")
     private String DB_URL;// = "jdbc:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
 
     @Value("${spring.datasource.username}")
@@ -23,12 +24,18 @@ public class UserRepository {
 
     @Value("${spring.datasource.password}")
     private String PWD;// = "#Danmark2300";
+    */
+    
+    DatabaseConnector database;
 
     public List<User> getAllUsers(){
         List<User> userList = new ArrayList<>();
         try{
             // Connect to database
-            Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
+            //Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
+            database = DatabaseConnector.getInstance();
+            Connection connection = database.getConnection();
+            
             Statement statement = connection.createStatement();
 
             // Create preparedStatement query
@@ -56,7 +63,10 @@ public class UserRepository {
     public void addUser(User user){
         try{
             // Connect to database
-            Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
+            //Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
+            database = DatabaseConnector.getInstance();
+            Connection connection = database.getConnection();
+            
             final String CREATE_QUERY ="INSERT INTO users(email, userPassword, firstName, lastName) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
 
