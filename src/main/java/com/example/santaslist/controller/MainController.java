@@ -84,11 +84,13 @@ public class MainController {
         }
         return "signup";
     }
-
+/*
     @GetMapping("/createwish")
     public String showCreate(){
         return "createwish";
     }
+
+ */
 
     @PostMapping("/createuser")
     public String createUser(@RequestParam("email") String newEmail, @RequestParam("userPassword") String newPassword, @RequestParam("firstName") String newFirstName, @RequestParam("lastName") String newLastName)
@@ -107,8 +109,10 @@ public class MainController {
 
     }
     @GetMapping("/showCreateWish")
-    public String showCreateWish (){
-        return "createWish";
+    public String showCreateWish (Model model){
+       Wish wish  = new Wish();
+        model.addAttribute("wish",wish);
+        return "createwish";
     }
     @PostMapping("/createWish")
     public String createWish(@RequestParam("wishName") String newWishName, @RequestParam("price") float newPrice, @RequestParam("priority") int newPriority, @RequestParam("wishDescription") String newWishDescription, @RequestParam("url") String newUrl, HttpSession session)
