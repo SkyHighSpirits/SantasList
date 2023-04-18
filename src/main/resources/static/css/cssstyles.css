@@ -232,6 +232,11 @@ input[type=text] {
     border: 2px solid red;
     text-align: center;
 }
+input[type=password] {
+    border-radius: 25px;
+    border: 2px solid red;
+    text-align: center;
+}
 
 input[type=submit] {
     background-color: red;
