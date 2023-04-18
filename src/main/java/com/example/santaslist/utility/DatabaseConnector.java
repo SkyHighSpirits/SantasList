@@ -12,7 +12,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 @Component
-@Scope("singleton")
+
 public class DatabaseConnector {
 
     private static DatabaseConnector databaseConnector;
