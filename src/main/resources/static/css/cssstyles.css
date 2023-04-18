@@ -275,7 +275,7 @@ input[type=submit] {
 .content-table thead tr {
     background-color: red;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
 }
 

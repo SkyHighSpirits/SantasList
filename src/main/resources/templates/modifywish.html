@@ -21,32 +21,36 @@
     <table class="content-table">
         <thead>
         <tr>
-            <th>wishID</th>
-            <th>userID</th>
             <th>Ønske</th>
             <th>Pris</th>
             <th>Beskrivelse</th>
             <th>URL</th>
             <th>Prioritet</th>
-            <th>Reservation</th>
         </tr>
         </thead>
+        <form action="/modifywish" method="POST">
         <tbody>
+
         <tr>
-            <td th:text="${wish.wishID}"></td>
-            <td th:text="${wish.userID}"></td>
-            <td th:text="${wish.wishName}"></td>
-            <td th:text="${wish.price}"></td>
-            <td th:text="${wish.wishDescription}"></td>
-            <td th:text="${wish.url}"></td>
-            <td th:text="${wish.priority}"></td>
-            <td th:text="${wish.reserved}"></td>
+            <td><input id="wishName" name="wishName" type="text" th:value="${wish.wishName}"/> </td>
+            <td><input id="price" name="price" type="number" th:value="${wish.price}"/></td>
+            <td><input id="wishDescription" name="wishDescription" type="text" th:value="${wish.wishDescription}"/></td>
+            <td><input id="url"  name="url" type="text" th:value="${wish.url}"/></td>
+            <td><input id="priority" name="priority" type="number" th:value="${wish.priority}"/></td>
         </tr>
         </tbody>
+
+    <input id="wishid_field" name="wishID" type="hidden" th:value="${wish.wishID}"/>
+    <input id="userid_field" name="userID" type="hidden" th:value="${wish.userID}"/>
+    <input id="reservation" name="reserved" type="hidden" th:value="${wish.reserved}"/>
+            <pre>
+    <input type="submit" value="Opdater ønske">
+            </pre>
+    </form>
     </table>
 </div>
 
-<pre>
+ <!--
     <form action="/modifywish" method="POST">
         <input id="wishid_field" name="wishID" type="hidden" th:value="${wish.wishID}"/>
         <input id="userid_field" name="userID" type="hidden" th:value="${wish.userID}"/>
@@ -67,8 +71,8 @@
         <input id="reservation" name="reserved" type="hidden" th:value="${wish.reserved}"/>
 
         <input type="submit" value="Opdater ønske">
-    </form>
-</pre>
+    </form> -->
+
 
 <footer class="footer">
   <div class="container">
