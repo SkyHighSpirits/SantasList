@@ -30,7 +30,7 @@ public class MainController {
     @ModelAttribute("searcheduser")
     public User getSearchedUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        User currentUser = (User) session.getAttribute("searcheduser");
+        User currentUser = (User) session.getAttribute("searchuser");
         return currentUser;
     }
 
