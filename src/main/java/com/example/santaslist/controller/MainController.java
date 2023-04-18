@@ -169,15 +169,15 @@ public class MainController {
         return "redirect:/santalist";
     }
 
-    @GetMapping("/delete/{number}")
-    public String deleteWish(@PathVariable("number") int number)
+    @GetMapping("/delete/{wishID}")
+    public String deleteWish(@PathVariable("wishID") int number)
     {
         // TODO: Implement bellow method
-        /*
-        wishRepository.deleteByID(number);
 
-         */
-        return "redirect:/";
+        wishRepository.deleteWish(wishRepository.findById(number));
+
+
+        return "redirect:/santalist";
     }
 
 
