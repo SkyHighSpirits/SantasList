@@ -13,7 +13,7 @@ body{
 }
 
 nav{
-    background: red;
+    background: #EC0C31;
     height: 80px;
     width: 100%;
 }
@@ -64,7 +64,7 @@ nav .nav-ul li a{
 
 /*styling for buttons*/
 .button{
-    background-color: red;
+    background-color: #EC0C31;
     border: none;
     color: white;
     padding: 15px 40px;
@@ -79,7 +79,7 @@ nav .nav-ul li a{
     box-shadow: 5px 5px 3px #888888;
 }
 
-button:hover{
+.button:hover{
     background-color: #C12301;
     transition: .5s;
 }
@@ -102,7 +102,7 @@ button:hover{
 }
 
 .footer{
-    background-color: red;
+    background-color: #EC0C31;
     padding: 70px;
     position: relative;
     width: 100%;
@@ -234,24 +234,24 @@ button:hover{
 }
 input[type=text] {
     border-radius: 25px;
-    border: 2px solid red;
+    border: 2px solid #EC0C31;
     text-align: center;
 }
 
 input[type=number] {
     border-radius: 25px;
-    border: 2px solid red;
+    border: 2px solid #EC0C31;
     text-align: center;
 }
 
 input[type=password] {
     border-radius: 25px;
-    border: 2px solid red;
+    border: 2px solid #EC0C31;
     text-align: center;
 }
 
 input[type=submit] {
-    background-color: red;
+    background-color: #EC0C31;
     border: none;
     color: white;
     padding: 15px 40px;
@@ -278,7 +278,7 @@ input[type=submit] {
 }
 
 .content-table thead tr {
-    background-color: red;
+    background-color: #EC0C31;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
@@ -298,11 +298,11 @@ input[type=submit] {
 }
 
 .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #EC0C31;
 }
 
 .content-table td .table-link{
-    background-color: red;
+    background-color: #EC0C31;
     color: white;
     padding: 7px 13px;
     text-align: center;
@@ -316,7 +316,7 @@ input[type=submit] {
 }
 
 .table-container .table-link{
-    background-color: red;
+    background-color: #EC0C31;
     color: white;
     padding: 7px 13px;
     text-align: center;

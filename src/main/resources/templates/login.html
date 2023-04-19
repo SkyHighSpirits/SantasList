@@ -16,18 +16,32 @@
   </ul>
 </nav>
 
-<form action="loginuser" method="post">
-  <div class="containerlogin">
-    <h3>Log på som</h3>
-    <p style="padding-bottom: 10px"><input id="login-email-field" name="email" type="text" placeholder="Email" th:value="${user.email}"></p>
+<div th:if="${session.currentuser}">
+  <form action="loginuser" method="post">
+    <div class="containerlogin">
+      <h3>Log på som</h3>
+      <p style="padding-bottom: 10px"><input id="auto-login-email-field" name="email" type="text" placeholder="Email" th:value="${currentuser.email}"></p>
 
 
-    <p style="padding-bottom: 10px"><input id="login-password-field" name="userPassword" type="password" placeholder="Kodeord" th:value="${user.userPassword}"></p>
+      <p style="padding-bottom: 10px"><input id="auto-login-password-field" name="userPassword" type="password" placeholder="Kodeord" th:value="${currentuser.userPassword}"></p>
 
-    <p><input type="submit" value="Login"></p>
-  </div>
-</form>
+      <p><input type="submit" value="Login"></p>
+    </div>
+  </form>
+</div>
+<div th:unless="${session.currentuser}">
+  <form action="loginuser" method="post">
+    <div class="containerlogin">
+      <h3>Log på som</h3>
+      <p style="padding-bottom: 10px"><input id="login-email-field" name="email" type="text" placeholder="Email" th:value="${user.email}"></p>
 
+
+      <p style="padding-bottom: 10px"><input id="login-password-field" name="userPassword" type="password" placeholder="Kodeord" th:value="${user.userPassword}"></p>
+
+      <p><input type="submit" value="Login"></p>
+    </div>
+  </form>
+</div>
 <br>
 <br>
 <br>

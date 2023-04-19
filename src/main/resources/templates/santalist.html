@@ -12,7 +12,6 @@
   <nav>
     <label ><a class="logo-link" th:href="@{/}" href="homepage.html">SantasList</a></label>
     <ul class="nav-ul">
-      <li><a class="nav-link" th:href="@{/signup}" href="signup.html">Opret</a></li>
       <li><a class="nav-link" th:href="@{/login}" href="login.html">Skift Bruger</a></li>
     </ul>
   </nav>
@@ -32,7 +31,6 @@
       <th>Beskrivelse</th>
       <th>Link</th>
       <th>Prioritet</th>
-      <th>Reservation</th>
       <th>Opdater</th>
       <th>Slet</th>
       </thead>
@@ -41,17 +39,8 @@
         <td th:text="${wish.wishName}"></td>
         <td th:text="${wish.price} + ' Kr'"></td>
         <td th:text="${wish.wishDescription}"></td>
-        <td th:text="${wish.url}"></td>
+        <td><a th:href="${wish.url}" target="_blank" th:text="${wish.url}"></a></td>
         <td th:text="${wish.priority} + ' af 5'"></td>
-        <td>
-          <div th:if="${wish.reserved}">
-            Er Reserveret
-          </div>
-          <!-- ELSE -->
-          <div th:unless="${wish.reserved}">
-            Ikke Reserveret
-          </div>
-        </td>
         <!--<td th:text="Er Reserveret"></td>-->
         <td> <a class="table-link" th:href="@{'/modifywish/' + ${wish.wishID}}" href="/modifywish">Update</a></td>
         <td> <a class="table-link" th:href="@{'/delete/' + ${wish.wishID}}" href="/delete">Delete</a></td>
@@ -59,6 +48,10 @@
       </tbody>
     </table>
   </div>
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
   <br>
   <footer class="footer">
@@ -105,10 +98,10 @@
 </div>
 <div th:unless="${session.currentuser}">
   <nav>
-    <label class="logo">SantasList</label>
+    <label ><a class="logo-link" th:href="@{/}" href="homepage.html">SantasList</a></label>
     <ul class="nav-ul">
-      <li><a class="nav-link" href="#">Opret</a></li>
-      <li><a class="nav-link" href="#">Skift Bruger</a></li>
+      <li><a class="nav-link" th:href="@{/signup}" href="signup.html">Opret</a></li>
+      <li><a class="nav-link" th:href="@{/login}" href="login.html">Log Ind</a></li>
     </ul>
   </nav>
 
@@ -135,7 +128,7 @@
         <td th:text="${wish.wishName}"></td>
         <td th:text="${wish.price} + ' Kr'"></td>
         <td th:text="${wish.wishDescription}"></td>
-        <td th:text="${wish.url}"></td>
+        <td><a th:href="${wish.url}" target="_blank" th:text="${wish.url}"></a></td>
         <td th:text="${wish.priority} + ' af 5'"></td>
         <td>
           <div th:if="${wish.reserved}">
@@ -166,6 +159,10 @@
       </tbody>
     </table>
   </div>
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
   <br>
   <footer class="footer">

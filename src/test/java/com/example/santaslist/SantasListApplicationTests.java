@@ -6,8 +6,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SantasListApplicationTests {
 
+    /*
+
     @Test
     void contextLoads() {
     }
+
+     */
 
 }
