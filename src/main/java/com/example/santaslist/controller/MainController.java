@@ -121,6 +121,14 @@ public class MainController {
         User currentuser = (User) session.getAttribute("currentuser");
         int id = currentuser.getUserID();
 
+        if(newPriority > 5)
+        {
+            newPriority = 5;
+        }
+        else if(newPriority < 1)
+        {
+            newPriority = 1;
+        }
         Wish wish = new Wish();
         wish.setUserID(id);
         wish.setWishName(newWishName);
@@ -158,6 +166,14 @@ public class MainController {
                              @RequestParam("reserved") boolean updateReserved, HttpSession session)
     {
         // TODO: Implement bellow methods
+        if(updatePriority > 5)
+        {
+            updatePriority = 5;
+        }
+        else if(updatePriority < 1)
+        {
+            updatePriority = 1;
+        }
         Wish updateWish = new Wish(wishID ,theID, updateWishName, updatePrice, updatePriority,
         updateWishDescription, updateUrl, updateReserved);
 
