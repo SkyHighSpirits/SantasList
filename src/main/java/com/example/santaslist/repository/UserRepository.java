@@ -16,7 +16,7 @@ import java.util.List;
 public class UserRepository {
 
 
-    /* @Value("${spring.datasource.url}")
+    @Value("${spring.datasource.url}")
     private String DB_URL;// = "jdbc:mysql://santalistdatabase.mysql.database.azure.com:3306/santalistdb";
 
     @Value("${spring.datasource.username}")
@@ -24,7 +24,7 @@ public class UserRepository {
 
     @Value("${spring.datasource.password}")
     private String PWD;// = "#Danmark2300";
-    */
+    
     
     DatabaseConnector database;
 
@@ -33,7 +33,7 @@ public class UserRepository {
         try{
             // Connect to database
             //Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
-            database = DatabaseConnector.getInstance();
+            database = DatabaseConnector.getInstance(DB_URL, UID, PWD);
             Connection connection = database.getConnection();
             
             Statement statement = connection.createStatement();
@@ -64,7 +64,7 @@ public class UserRepository {
         try{
             // Connect to database
             //Connection connection = DriverManager.getConnection(DB_URL, UID, PWD);
-            database = DatabaseConnector.getInstance();
+            database = DatabaseConnector.getInstance(DB_URL, UID, PWD);
             Connection connection = database.getConnection();
             
             final String CREATE_QUERY ="INSERT INTO users(email, userPassword, firstName, lastName) VALUES (?, ?, ?, ?)";
