@@ -39,7 +39,7 @@
         <td th:text="${wish.wishName}"></td>
         <td th:text="${wish.price} + ' Kr'"></td>
         <td th:text="${wish.wishDescription}"></td>
-        <td th:text="${wish.url}"></td>
+        <td><a th:href="${wish.url}" target="_blank" th:text="${wish.url}"></a></td>
         <td th:text="${wish.priority} + ' af 5'"></td>
         <!--<td th:text="Er Reserveret"></td>-->
         <td> <a class="table-link" th:href="@{'/modifywish/' + ${wish.wishID}}" href="/modifywish">Update</a></td>
