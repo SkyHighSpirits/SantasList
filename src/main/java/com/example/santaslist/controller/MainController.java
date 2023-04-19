@@ -48,6 +48,7 @@ public class MainController {
     public String loginUser(@RequestParam("email") String checkEmail, @RequestParam("userPassword") String checkPassword, Model model, HttpSession session){
         User user = new User();
         model.addAttribute("user",user);
+
         for (User checkuser: userRepository.getAllUsers()) {
             String actualEmail = checkuser.getEmail();
             String actualPassword = checkuser.getUserPassword();
